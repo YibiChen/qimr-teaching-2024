@@ -15,6 +15,6 @@ harmonypy>=0.0.9
 matplotlib<3.9.0
 netgraph>=4.13.2
 python-louvain>=0.16
-multimodal_cci
+mmcci
 git+https://github.com/xiao233333/stLearn.git@update-dependency
 -e .
