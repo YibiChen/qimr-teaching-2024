@@ -162,6 +162,30 @@ In a custom directory:
 $ conda create --prefix [some-directory]/conda-envs/qimr-teaching-2024 --file=environment-linux.yml
 ```
 
+Windows:
+
+Install Windows Subsystem for Linux (WSL) then you can follow our guide for Linux. To install WSL, open PowerShell or Windows Command Prompt in administrator mode by right-clicking and selecting "Run as administrator", enter the wsl --install command.
+```
+wsl --install
+```
+On WSL, you can still access your files on the windows drives from `/mnt`. For example, `/mnt/c/` would direct you to your `c:`drive on windows. However, be aware that these storge space don't fully support Linux permissions and file operations, so all programs must be installed in local WSL directories (e.g. /home/YourUserName).
+
+To install conda:
+```
+curl -L -O "wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+bash  Miniconda3-latest-Linux-x86_64.sh
+```
+if conda is not in your path, run `export PATH=Your_installed_location/bin:$PATH`. You may encounter issues with `conda init`, this is most likely due to security policy in windows. To change that, run powershell using Administrator, then,
+```
+Set-ExecutionPolicy RemoteSigned
+```
+Then, input Y and reopen your WSL terminal to run  `conda init` and `conda activate`.
+
+You may also get permission issues (e.g. `CondaIOError`) when creating new conda environments. To fix it:
+```
+sudo chown -R username /home/username/path-to-conda-folder/
+```
+
 ### Recreating the Conda Environment YAML
 
 If the above YAML fails to install, or you wish to upgrade a dependency, or you wish to recreate it. Run the following
